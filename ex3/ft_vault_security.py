@@ -17,18 +17,19 @@ def secure_archive(
             file.write(content)
             return (True, content)
     except OSError as e:
-        return (False, str(e))
+        return (False, f"{e}")
 
 
 if __name__ == "__main__":
+    print("=== Cyber Archives Security ===")
     ok, data = secure_archive("vault.txt", "write", "top secret\n")
-    print(ok, repr(data))
+    print(ok, data)
 
     ok, data = secure_archive("vault.txt", "read")
-    print(ok, repr(data))
+    print(ok, data)
 
     ok, data = secure_archive("nope.txt", "read")
-    print(ok, repr(data))
+    print(ok, data)
 
     ok, data = secure_archive("vault.txt", "delete")
-    print(ok, repr(data))
+    print(ok, data)
